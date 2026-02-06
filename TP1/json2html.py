@@ -16,7 +16,7 @@ def new_file(filename, content):
     with open(filename, "w", encoding="utf-8") as f:
         f.write(content)
 
-# ------------------------ Script principal ------------------------------
+# Script principal
 mk_dir("output")
 mk_dir("output/reparacoes")
 mk_dir("output/intervencoes")
@@ -70,7 +70,8 @@ for rep in sorted(dataset["reparacoes"], key = lambda r: r["data"]):
         if interv["codigo"] not in tipos_intervencao:
             tipos_intervencao[interv["codigo"]] = interv.copy()
             intervencoes_reparacoes[interv["codigo"]] = []
-        intervencoes_reparacoes[interv["codigo"]].append(rep["nif"])
+        if rep["nif"] not in intervencoes_reparacoes[interv["codigo"]]:
+            intervencoes_reparacoes[interv["codigo"]].append(rep["nif"])
 
         html_rep += f'''
         <li><a href="../intervencoes/{ interv["codigo"] }.html">{ interv["nome"] }</a></li>
