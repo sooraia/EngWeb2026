@@ -8,7 +8,7 @@
 **Nome:** Soraia Filipa Ribeiro Pereira<br>
 **ID:** 106806
 
-<img src="foto.png" width="400"/>
+<img src="../foto.png" width="400"/>
 
 ## Resumo:
 O [script em Python](json2html.py) desenvolvido gera páginas HTML a partir de um [dataset](dataset_reparacoes.json) em formato JSON de reparações realizadas numa oficina automóvel. Primeiramente é percorrida a lista de reparações, criando páginas individuais para cada reparação e armazenando em dicionários auxiliares informação sobre as reparações, os tipos de intervenção e os pares marca/modelo, assim como a lista dos NIFs das reparações a que estão associados. Em seguida, itera-se sobre estes dicionários para criar as páginas individuais de cada intervenção e marca/modelo. No final são geradas as páginas principais com as listagens das reparações, intervenções e marcas/modelos com links para as páginas individuais correspondentes.

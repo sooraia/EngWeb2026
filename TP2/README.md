@@ -8,7 +8,7 @@
 **Nome:** Soraia Filipa Ribeiro Pereira<br>
 **ID:** 106806
 
-<img src="foto.png" width="400"/>
+<img src="../foto.png" width="400"/>
 
 ## Resumo:
 O servidor HTTP responde a pedidos com uma página HTML que apresenta os dados de reparações numa oficina automóvel. 
