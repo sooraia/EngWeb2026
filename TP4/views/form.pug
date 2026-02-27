@@ -1,0 +1,55 @@
+extends layout 
+
+block content
+  .w3-card-4
+    header.w3-container.w3-purple
+      h2= emd ? "Editar Exame Médico Desportivo" : "Novo Exame Médico Desportivo"
+    
+    form.w3-container.w3-padding-16(method="POST" action=emd ? `/emd/${emd.id}` : "/emd")
+      fieldset
+        legend Metadata
+        if emd
+          input(type="hidden" name="id" value=emd.id)
+
+        label Nome
+        fieldset 
+          label Primeiro
+          input.w3-input.w3-round(type="text" name="primeiro_nome" value=emd ? emd.primeiro_nome : "")
+          label Último
+          input.w3-input.w3-round(type="text" name="sobrenome" value=emd ? emd.sobrenome : "")
+
+        label Data
+        input.w3-input.w3-round(type="date" name="dataEMD" value=emd ? emd.dataEMD : "")
+        
+        label Idade
+        input.w3-input.w3-round(type="number" name="idade" value=emd ? emd.idade : "")
+        
+        label Género
+        fieldset
+          label.w3-margin-right Masculino
+            input(type="radio" name="género" value="M" checked=emd && emd.género === "M")
+          label Feminino
+            input(type="radio" name="género" value="F" checked=emd && emd.género === "F")
+        
+        label Morada
+        input.w3-input.w3-round(type="text" name="morada" value=emd ? emd.morada : "")
+
+        label Modalidade
+        input.w3-input.w3-round(type="text" name="modalidade" value=emd ? emd.modalidade : "")
+
+        label Clube
+        input.w3-input.w3-round(type="text" name="clube" value=emd ? emd.clube : "")
+
+        label Email
+        input.w3-input.w3-round(type="email" name="email" value=emd ? emd.email : "")
+        br
+        input(type="checkbox" name="federado" checked=emd && emd.federado)
+        label.w3-margin-top.w3-margin-bottom   Federado  
+        br
+        br        
+        input(type="checkbox" name="resultado" checked=emd && emd.resultado)
+        label.w3-margin-top   Apto  
+
+      
+      button.w3-btn.w3-purple.w3-margin-top(type="submit")= emd ? "Update" : "Insert"
+      a.w3-btn.w3-grey.w3-margin-top.w3-margin-left(href="/") Cancel
