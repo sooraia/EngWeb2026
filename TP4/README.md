@@ -1,5 +1,5 @@
 # TP4: Exames Médicos Desportivos
-**Data:** 20 de Fev. 2026<br>
+**Data:** 27 de Fev. 2026<br>
 **Autor:** Soraia Pereira<br>
 **UC:** Engenharia Web 2025/2026
 
