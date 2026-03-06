@@ -1,0 +1,23 @@
+extends layout
+
+block content
+  h1.title FILMES
+  .sort-container
+    label Ordenar por: 
+    select(onchange="window.location=this.value")
+      option(value="/filmes?sort=title" selected=(sort_data === "title")) Título
+      option(value="/filmes?sort=year" selected=(sort_data === "year")) Ano
+
+  .content
+    table#table.clickable
+      tr
+        th Título
+        th Ano
+        th #Géneros
+        th #Atores
+      each f in list
+        tr(onclick=`window.location='/filmes/${f.id}'`)
+          td= f.title 
+          td= f.year
+          td= f.genres.length
+          td= f.cast.length

@@ -1,0 +1,15 @@
+extends layout
+
+block content
+  h1.title GÉNEROS
+  .content
+    table#table.clickable
+      tr
+        th Nome
+        th Nº Filmes
+      each f in list
+        tr(onclick=`window.location='/generos/${encodeURIComponent(f.genre)}'`)
+          td= f.genre 
+          td= f.movies.length
+    footer
+      a.button(href=`/generos`) Voltar aos géneros

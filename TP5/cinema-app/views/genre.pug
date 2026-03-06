@@ -1,0 +1,20 @@
+extends layout 
+
+block content
+  .content
+    table#table
+      tr
+          th Nome
+          td= genre.genre
+      tr
+          th(style="width: 100px") Nº Filmes
+          td=genre.movies.length
+      tr
+          th Filmes
+          td
+            each f in genre.movies
+              a(href=`/filmes/${f.id}`)
+                span.film= f.title
+      tr
+    footer
+      a.button(href=`/`) Voltar

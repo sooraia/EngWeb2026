@@ -1,0 +1,20 @@
+extends layout 
+
+block content
+  .content
+    table#table
+        tr
+            th Nome
+            td= ator.actor
+        tr
+            th(style="width: 100px") Nº Filmes
+            td=ator.movies.length
+        tr
+            th Filmes
+            td
+                each f in ator.movies
+                    a(href=`/filmes/${f.id}`)
+                        span.film= f.title
+        tr
+    footer
+      a.button(href=`/atores`) Voltar aos atores

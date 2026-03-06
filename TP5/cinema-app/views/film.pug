@@ -1,0 +1,25 @@
+extends layout 
+
+block content
+  .content
+    table#table
+      tr
+          th Título
+          td= filme.title
+      tr
+          th Ano
+          td= filme.year
+      tr
+          th Géneros
+          td
+            each g in filme.genres
+              a(href=`/generos/${encodeURIComponent(g)}`)
+                span.genre= g
+      tr
+          th Atores
+          td
+            each a in filme.cast
+              a(href=`/atores/${encodeURIComponent(a)}`)
+                span.actor= a
+    footer
+      a.button(href=`/`) Voltar aos filmes
