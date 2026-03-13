@@ -1,0 +1,13 @@
+extends layout
+
+block content
+  h1.title ATORES
+  .content
+    table#table.clickable
+      tr
+        th Nome
+        th Nº Filmes
+      each f in list
+        tr(onclick=`window.location='/atores/${encodeURIComponent(f._id)}'`)
+          td= f.actor 
+          td= f.films.length
