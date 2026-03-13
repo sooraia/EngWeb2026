@@ -1,4 +1,4 @@
-# TP6: Orquestralão de Serviços para uma App de Cinema Americano
+# TP6: Orquestração de Serviços para uma App de Cinema Americano
 **Data:** 12 de Mar. 2026<br>
 **Autor:** Soraia Pereira<br>
 **UC:** Engenharia Web 2025/2026
