@@ -1,0 +1,30 @@
+extends layout.pug 
+block content
+  .w3-container
+    h2 Detalhe da Reparação #{reparacao._id}
+
+    p
+      a.w3-button.w3-teal(href='/') Voltar à página principal
+
+    .w3-card-4
+      .w3-container.w3-teal
+        h3 Reparação #{reparacao._id}
+      .w3-container
+        p
+          strong Data:
+          |  #{reparacao.data}
+        p
+          strong Nome:
+          |  #{reparacao.nome}
+        p
+          strong Matrícula:
+          |  #{reparacao.viatura.matricula}
+        p
+          strong Marca:
+          |  #{reparacao.viatura.marca}
+        p
+          strong Intervenções:
+          if reparacao.intervencoes && reparacao.intervencoes.length > 0
+            ul
+              each intervencao in reparacao.intervencoes
+                li #{intervencao}

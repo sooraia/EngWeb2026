@@ -1,0 +1,24 @@
+extends layout.pug 
+
+block content
+  .w3-container
+    h2 Reparações de Veículos
+    .w3-bar
+    table.w3-table-all
+      tr.w3-teal
+        th Id
+        th Data
+        th Nome
+        th Matrícula
+        th Marca
+        th Intervenções
+      each r in reparacoes
+        tr
+          td
+            a(href='/' + r._id)= r._id
+          td= r.data
+          td= r.nome
+          td= r.viatura.matricula
+          td
+            a(href='/marcas/' + r.viatura.marca)= r.viatura.marca
+          td= (r.intervencoes || []).length

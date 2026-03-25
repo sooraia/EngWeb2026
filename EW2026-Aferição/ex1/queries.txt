@@ -1,0 +1,77 @@
+1)
+db.repairs.find().count()
+
+2)
+db.repairs.find({"viatura.marca": "Cadillac"}).count()
+
+3)
+db.repairs.distinct("viatura.marca").sort()
+
+Output:
+    [
+    'Alfa Romeo', 'Aston Martin', 'Audi',       'BMW',
+    'Bentley',    'Cadillac',     'Chery',      'Chevrolet',
+    'Chrysler',   'Citroen',      'DFM',        'Dacia',
+    'Daewoo',     'Daihatsu',     'Dodge',      'Ferrari',
+    'Fiat',       'Ford',         'Geely',      'Honda',
+    'Hyundai',    'Infiniti',     'Isuzu',      'Jaguar',
+    'Jeep',       'Kia',          'Lada',       'Lamborghini',
+    'Lancia',     'Land Rover',   'Maserati',   'Mazda',
+    'Mercedes',   'Mini',         'Mitsubishi', 'Nissan',
+    'Opel',       'Peugeot',      'Porsche',    'Proton',
+    'Renault',    'Rover',        'Saab',       'Seat',
+    'Skoda',      'Smart',        'SsangYong',  'Subaru',
+    'Suzuki',     'Tata',         'Tofaş',      'Toyota',
+    'Volkswagen', 'Volvo'
+    ]
+
+4)
+db.repairs.aggregate([
+    {$unwind: "$intervencoes"},
+    {$group: { "_id": "$intervencoes.nome", count: {$sum: 1}}}
+])
+
+Output:
+    [
+    { _id: 'Substituição do catalisador', count: 1617 },
+    { _id: 'Troca de pneus', count: 1549 },
+    { _id: 'Substituição de bateria', count: 1592 },
+    { _id: 'Diagnóstico eletrónico', count: 1597 },
+    { _id: 'Ajuste do sistema de freios', count: 1613 },
+    {
+        _id: 'Substituição de componentes do sistema de ar condicionado',
+        count: 1596
+    },
+    { _id: 'Troca de óleo', count: 1611 },
+    { _id: 'Troca de correia de distribuição', count: 1533 },
+    { _id: 'Troca de filtro de combustível', count: 1595 },
+    { _id: 'Reparação elétrica', count: 1590 },
+    { _id: 'Troca de filtro de habitáculo', count: 1661 },
+    { _id: 'Substituição de molas', count: 1590 },
+    { _id: 'Serviço de transmissão', count: 1573 },
+    { _id: 'Substituição de amortecedores', count: 1645 },
+    { _id: 'Substituição de pastilhas de freio', count: 1635 },
+    { _id: 'Recarga de gás do sistema de ar condicionado', count: 1519 },
+    { _id: 'Troca de filtro de ar', count: 1638 },
+    { _id: 'Substituição de braços de suspensão', count: 1568 },
+    { _id: 'Substituição do silenciador', count: 1610 },
+    { _id: 'Balanceamento de rodas', count: 1646 }
+    ]
+
+5)
+db.repairs.aggregate([
+    { $group: { _id: { $year: { $toDate: "$data" } }, count: { $sum: 1}}}
+])
+
+Output:
+    [
+    { _id: 2016, count: 586 },
+    { _id: 2022, count: 577 },
+    { _id: 2021, count: 590 },
+    { _id: 2019, count: 600 },
+    { _id: 2015, count: 626 },
+    { _id: 2018, count: 572 },
+    { _id: 2020, count: 567 },
+    { _id: 2017, count: 567 },
+    { _id: 2023, count: 315 }
+    ]
