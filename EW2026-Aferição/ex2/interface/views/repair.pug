@@ -1,14 +1,12 @@
 extends layout.pug 
 block content
-  .w3-container
-    h2 Detalhe da Reparação #{reparacao._id}
+    .w3-container.w3-teal
+        h2 Reparação #{reparacao._id}
 
     p
       a.w3-button.w3-teal(href='/') Voltar à página principal
 
     .w3-card-4
-      .w3-container.w3-teal
-        h3 Reparação #{reparacao._id}
       .w3-container
         p
           strong Data:
@@ -16,6 +14,9 @@ block content
         p
           strong Nome:
           |  #{reparacao.nome}
+        p
+          strong NIF:
+          |  #{reparacao.nif}
         p
           strong Matrícula:
           |  #{reparacao.viatura.matricula}
@@ -25,6 +26,13 @@ block content
         p
           strong Intervenções:
           if reparacao.intervencoes && reparacao.intervencoes.length > 0
-            ul
-              each intervencao in reparacao.intervencoes
-                li #{intervencao}
+            table.w3-table-all
+                tr.w3-teal
+                    th Código
+                    th Nome
+                    th Descrição
+                each intervencao in reparacao.intervencoes
+                    tr
+                        td #{intervencao.codigo}
+                        td #{intervencao.nome}
+                        td #{intervencao.descricao}

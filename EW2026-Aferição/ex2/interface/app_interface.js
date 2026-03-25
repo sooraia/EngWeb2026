@@ -48,6 +48,26 @@ app.get('/:id', (req, res) => {
     });
 });
 
+app.get('/marcas/:marca', (req, res) => {
+  const d = new Date().toISOString().substring(0, 16);
+  const marca = req.params.marca;
+    axios.get(`${API_URL}?viatura.marca=${encodeURIComponent(marca)}&_select=_id,data,nome,viatura,intervencoes`)
+    .then(response => {
+      res.render('marca', {
+        marca: marca,
+        modelos: response.data.map(r => r.viatura.modelo)
+                                .filter((modelo, idx, arr) => arr.indexOf(modelo) === idx),
+        reparacoes: response.data,
+        date: d
+      });
+    })
+    .catch(err => {
+      res.render('error', {
+        error: err,
+        message: `Erro ao obter os registos da marca ${marca}`
+      });
+    });
+});
 
 const PORT = 16026;
 app.listen(PORT, () => {
